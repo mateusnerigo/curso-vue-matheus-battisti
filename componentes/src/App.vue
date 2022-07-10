@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    <Header :esta_logado=false />
     <PrimeiroComponente />
     <p>------- {{ endText }} --------</p>
 
@@ -8,8 +8,6 @@
     <p>------- {{ endText }} --------</p>
 
     <Pessoa />
-
-    <Form />
   </div>
 </template>
 
@@ -18,7 +16,6 @@ import Header from "./components/Header";
 import PrimeiroComponente from "./components/PrimeiroComponente";
 import LifeCycle from "./components/LifeCycle"
 import Pessoa from './components/Pessoa.vue';
-import Form from './components/Form.vue';
 
 export default {
   name: "App",
@@ -27,7 +24,6 @@ export default {
     PrimeiroComponente,
     LifeCycle,
     Pessoa,
-    Form,
   },
   data() {
     return {

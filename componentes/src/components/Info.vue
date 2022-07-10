@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p v-if='esta_trabalhando'>Estou trabalhando no momento.</p>
+    <p v-if='situacao'>Estou trabalhando no momento.</p>
     <p v-else>Estou em busca de novas oportunidades.</p>
 
     <p>Utilizo as seguintes tecnologias para backend: </p>
@@ -34,13 +34,16 @@
 import Picture from './Picture.vue';
 
 export default {
+  name: 'Info',
   components: {
     Picture
   },
-  name: 'Info',
+  props: {
+    email: String,
+    situacao: Boolean,
+  },
   data() {
     return {
-      esta_trabalhando: true,
       mostrar_email: false,
       texto_botao: 'Mostrar email',
       backend_technologies: ['JS', 'PHP', 'Java'],
@@ -50,15 +53,13 @@ export default {
         {id: 3, language: 'SCSS'},
       ],
 
-      email: 'mateus@email.com',
       link_portfolio: 'https://google.com'
     }
   },
   methods: {
     showEmail() {
-      const mostrarEmail = this.mostrar_email;
-      mostrarEmail = !mostrarEmail;
-      this.texto_botao = (!mostrarEmail)
+      this.mostrar_email = !this.mostrar_email;
+      this.texto_botao = (!this.mostrar_email)
         ? 'Mostrar email'
         : 'Esconder email';
     }
