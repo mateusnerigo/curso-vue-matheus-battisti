@@ -1,46 +1,46 @@
 <template>
-  <div>
-    <Header :esta_logado=false />
-    <PrimeiroComponente />
-    <p>------- {{ endText }} --------</p>
+	<div>
+		<Header :esta_logado=false />
+		<PrimeiroComponente />
+		<p>------- {{ endText }} --------</p>
 
-    <LifeCycle />
-    <p>------- {{ endText }} --------</p>
+		<LifeCycle />
+		<p>------- {{ endText }} --------</p>
 
-    <Pessoa />
-  </div>
+		<Pessoa />
+	</div>
 </template>
 
 <script>
-import Header from "./components/Header";
-import PrimeiroComponente from "./components/PrimeiroComponente";
-import LifeCycle from "./components/LifeCycle"
-import Pessoa from './components/Pessoa.vue';
+	import Header from './components/Header';
+	import PrimeiroComponente from './components/PrimeiroComponente';
+	import LifeCycle from './components/LifeCycle';
+	import Pessoa from './components/Pessoa.vue';
 
-export default {
-  name: "App",
-  components: {
-    Header,
-    PrimeiroComponente,
-    LifeCycle,
-    Pessoa,
-  },
-  data() {
-    return {
-      endText: "END"
-    }
-  }
-};
+	export default {
+		name: 'App',
+		components: {
+			Header,
+			PrimeiroComponente,
+			LifeCycle,
+			Pessoa,
+		},
+		data() {
+			return {
+				endText: 'END',
+			};
+		},
+	};
 </script>
 
 <style>
-  body {
-    background-color: #666;
-    color: #ccc;
-  }
+	body {
+		background-color: #666;
+		color: #ccc;
+	}
 
-  a {
-    color: #c77;
-  }
+	a {
+		color: #c77;
+	}
 </style>
 
