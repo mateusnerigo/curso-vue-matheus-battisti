@@ -54,11 +54,11 @@
         "tipo": "Tomate"
       },
       {
-        "id": 4,
+        "id": 5,
         "tipo": "Cebola roxa"
       },
       {
-        "id": 4,
+        "id": 6,
         "tipo": "Pepino"
       }
     ]
@@ -77,5 +77,14 @@
       "tipo": "Finalizado"
     }
   ],
-  "burgers": []
+  "burgers": [
+    {
+      "nomeCliente": "",
+      "pao": "",
+      "carne": "",
+      "opcionais": [],
+      "status": "Finalizado",
+      "id": 1
+    }
+  ]
 }
