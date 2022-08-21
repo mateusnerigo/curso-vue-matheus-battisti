@@ -5,7 +5,7 @@
 npm install
 ```
 ---
-### Compiles and hot-reloads for development (need to be runned simultaneously)
+### Compiles and hot-reloads for development (need to be running simultaneously)
 #### JsonAPI backend
 ```
 npm run backend
