@@ -4,41 +4,41 @@
 
 		<div id="dashboard-table-head">
 			<div class="order-id">#: </div>
-			<div>Cliente</div>
-			<div>Pão</div>
-			<div>Carne</div>
-			<div>Opcionais</div>
-			<div>Ações</div>
+			<div>Client</div>
+			<div>Bread</div>
+			<div>Meat</div>
+			<div>Opcionals</div>
+			<div>Actions</div>
 		</div>
 
 		<div id="dashboard-table-rows">
-			<div class="dashboard-table-row" v-for="burger in burgers" :key="burger.id">
-				<div class="order-number">{{ burger.id }}</div>
-				<div>{{ burger.nomeCliente }}</div>
-				<div>{{ burger.pao }}</div>
-				<div>{{ burger.carne }}</div>
+			<div class="dashboard-table-row" v-for="order in orders" :key="order.id">
+				<div class="order-number">{{ order.id }}</div>
+				<div>{{ order.clientName }}</div>
+				<div>{{ order.bread }}</div>
+				<div>{{ order.meat }}</div>
 				<div>
 					<ul>
-						<li v-for="(opcional, index) in burger.opcionais" :key="index">
+						<li v-for="(opcional, index) in order.opcionals" :key="index">
 							{{ opcional }}
 						</li>
 					</ul>
 				</div>
 				<div>
 					<select name="status" class="dashboard-select-status"
-									@change="updateOrder($event, burger.id)"
-									:disabled="burger.status == 'Finalizado'"
+									@change="updateOrder($event, order.id)"
+									:disabled="order.status == 'Finished'"
 					>
-						<option value="" disabled selected>Selecione:</option>
+						<option value="" disabled selected>Choose:</option>
 
-						<option v-for="s in status" :key="s.id" :value="s.tipo"
-									 	:selected="burger.status == s.tipo"
+						<option v-for="s in status" :key="s.id" :value="s.status"
+									 	:selected="order.status == s.status"
 						>
-							{{ s.tipo }}
+							{{ s.status }}
 						</option>
 					</select>
 
-					<button class="cancel-btn" @click="cancelOrder(burger.id)">Cancelar</button>
+					<button class="cancel-btn" @click="cancelOrder(order.id)">Cancel</button>
 				</div>
 			</div>
 		</div>
@@ -55,44 +55,65 @@
 		},
 		data() {
 			return {
-				burgers: null,
-				burger_id: null,
+				// used variables initialization
+				orders: null,
+				order_id: null,
 				status: [],
 				msg: null
 			}
 		},
 		methods: {
+			/**
+			 * Function that brings the orders made by users on BurgerForm component
+			 */
 			async getOrders() {
-				const req = await fetch('http://localhost:3000/burgers');
-				this.burgers = await req.json();
+				const req = await fetch('http://localhost:3000/orders');
+				this.orders = await req.json();
 
+				// returns possible status
 				this.getStatus();
 			},
 
+			/**
+			 * Function that brings possible status used for display
+			 */
 			async getStatus() {
 				const req = await fetch('http://localhost:3000/status');
 				this.status = await req.json();
 			},
 
+			/**
+			 * Function that handles the removing of an order by its ID
+			 */
 			async cancelOrder(orderId) {
-				await fetch(`http://localhost:3000/burgers/${orderId}`,{
+				await fetch(`http://localhost:3000/orders/${orderId}`,{
 					method: 'DELETE'
 				});
 
-				this.handleMessage(`O pedido de nº ${orderId} foi cancelado!`);
+				// show the success message
+				this.handleMessage(`Order #${orderId} canceled!`);
+
+				// calls the function that brings the orders, updating orders table
 				this.getOrders();
 			},
 
+			/**
+			 * Function that handles the updating of an order by its ID
+			 */
 			async updateOrder(event, orderId) {
-				await fetch(`http://localhost:3000/burgers/${orderId}`, {
+				await fetch(`http://localhost:3000/orders/${orderId}`, {
 					method: 'PATCH',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({ status: event.target.value })
 				});
 
-				this.handleMessage(`O pedido de nº ${orderId} foi atualizado!`);
+				// show the success message
+				this.handleMessage(`Order #${orderId} updated!`);
 			},
 
+			/**
+			 * Auxiliary function for setting a message for a given time
+			 */
 			handleMessage(message) {
 				this.msg = message;
 				setTimeout(() => (this.msg = ''), 3000);

@@ -1,90 +1,95 @@
 {
-  "ingredientes": {
-    "paes": [
+  "ingredients": {
+    "breads": [
       {
         "id": 1,
-        "tipo": "Italiano Branco"
+        "name": "Italian bread"
       },
       {
         "id": 2,
-        "tipo": "3 Queijos"
+        "name": "3 Cheese bread"
       },
       {
         "id": 3,
-        "tipo": "Parmesão e Orégano"
+        "name": "Parmesan and Oregano bread"
       },
       {
         "id": 4,
-        "tipo": "Integral"
+        "name": "Whole Grain bread"
       }
     ],
-    "carnes": [
+    "meats": [
       {
         "id": 1,
-        "tipo": "Maminha"
+        "name": "Rump skirt"
       },
       {
         "id": 2,
-        "tipo": "Alcatra"
+        "name": "Rump steak"
       },
       {
         "id": 3,
-        "tipo": "Picanha"
+        "name": "Rump cap"
       },
       {
         "id": 4,
-        "tipo": "Veggie burger"
+        "name": "Veggie burger"
       }
     ],
-    "opcionais": [
+    "opcionals": [
       {
         "id": 1,
-        "tipo": "Bacon"
+        "name": "Bacon"
       },
       {
         "id": 2,
-        "tipo": "Cheddar"
+        "name": "Cheddar"
       },
       {
         "id": 3,
-        "tipo": "Salame"
+        "name": "Salami"
       },
       {
         "id": 4,
-        "tipo": "Tomate"
+        "name": "Tomato"
       },
       {
         "id": 5,
-        "tipo": "Cebola roxa"
+        "name": "Purple Onion"
       },
       {
         "id": 6,
-        "tipo": "Pepino"
+        "name": "Cucumber"
       }
     ]
   },
   "status": [
     {
       "id": 1,
-      "tipo": "Solicitado"
+      "status": "Created"
     },
     {
       "id": 2,
-      "tipo": "Em produção"
+      "status": "In production"
     },
     {
       "id": 3,
-      "tipo": "Finalizado"
+      "status": "Finished"
     }
   ],
-  "burgers": [
+  "orders": [
     {
-      "nomeCliente": "",
-      "pao": "",
-      "carne": "",
-      "opcionais": [],
-      "status": "Finalizado",
-      "id": 1
+      "clientName": "Mateus Neri",
+      "bread": "Italian bread",
+      "meat": "Rump cap",
+      "opcionals": [
+        "Bacon",
+        "Cheddar",
+        "Purple Onion",
+        "Tomato"
+      ],
+      "status": "In production",
+      "id": 2
     }
   ]
 }
