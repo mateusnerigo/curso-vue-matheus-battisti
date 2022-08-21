@@ -4,12 +4,18 @@
 ```
 npm install
 ```
+---
+### Compiles and hot-reloads for development (need to be runned simultaneously)
+#### JsonAPI backend
+```
+npm run backend
+```
 
-### Compiles and hot-reloads for development
+#### Application
 ```
 npm run serve
 ```
-
+---
 ### Compiles and minifies for production
 ```
 npm run build
